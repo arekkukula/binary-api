@@ -14,8 +14,4 @@ export class User extends BufferObject {
         this.firstName = firstName;
         this.secondName = secondName;
     }
-
-    fn() {
-        let x = 0;
-    }
 }
