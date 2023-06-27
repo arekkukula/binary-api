@@ -1,0 +1,21 @@
+<html>
+    <head>
+    </head>
+
+    <body>
+
+        <script type="module">
+            import { User } from "/shared/user.js";
+            const user = new User(123456789, "First Name", "Second Name");
+
+            const encodedUser = user.encode();
+            const view = new Uint8Array(encodedUser);
+            console.log("ENCODED", view, "\n\n\n");
+
+            let http = new XMLHttpRequest();
+            http.open("POST", "/api/buf", true);
+            http.responseType = "arraybuffer";
+            http.send(view);
+        </script>
+    </body>
+</html>
