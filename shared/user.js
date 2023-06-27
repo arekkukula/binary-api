@@ -15,10 +15,17 @@ export class User extends BufferObject {
         this.secondName = secondName;
     }
 
-    decode(buffer) {
-        this.decodeNumber();
-        this.decodeString();
-        this.decodeString();
-        this.proceed(buffer);
+    toBuffer() {
+        this.encodeNumber("id");
+        this.encodeString("firstName");
+        this.encodeString("secondName");
+        return this.encode();
+    }
+
+    fromBuffer(buffer) {
+        this.decodeNumber("id");
+        this.decodeString("firstName");
+        this.decodeString("secondName");
+        this.decode(buffer);
     }
 }
