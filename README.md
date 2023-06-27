@@ -7,13 +7,13 @@ It is based upon JavaScript's `ArrayBuffer`, where each message follows a patter
 
 `Uint32 NextDataLength` | `SpecifiedDataFormat Data` | `Uint32 NextDataLength` | ...
 
-Where `SpecifiedDataFormat` is some type of `ArrayBuffer`'s view, for example:
+Where `SpecifiedDataFormat` is a `TypedArray` (view of the buffer), for example:
 * `Uint8Array`,
 * `Int32Array`,
 * `Float64Array`,
 * `...`
 
-This approach requires a bit of setup, namely to specify how each type is encoded and decoded. 
+This approach requires a bit of setup, namely to specify how each type is decoded. 
 
 ## Encoding
 
@@ -42,5 +42,32 @@ The algorithm asserts the ordering. Encoding basic types is rather simple.
 
 ## Decoding
 
-Decoding is the same as encoding, reversed. No need for more explanation at this time.
+From theory's standpoint, decoding is the same as encoding, but reversed.
+From API's standpoint and the usability of this solution, each type deriving from a base
+class of `BufferObject` needs to declare a sequence of decoding itself.
 
+For example:
+
+```javascript
+export class User extends BufferObject {
+    id;
+    firstName;
+    secondName;
+
+    constructor(id, firstName, secondName) {
+        super();
+        this.id = id;
+        this.firstName = firstName;
+        this.secondName = secondName;
+    }
+    // THIS FUNCTION IS IMPORTANT!
+    decode(buffer) {
+        this.decodeNumber();
+        this.decodeString();
+        this.decodeString();
+        this.proceed(buffer);
+    }
+}
+```
+
+Under the hood, each `this.decodeXYZ()` call adds a decoding step, that won't be executed until `this.proceed(buffer)` is called.
