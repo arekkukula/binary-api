@@ -92,7 +92,7 @@ result in a `TypeError`.
 - `BufferObject.encodeBufferObject(name)`
 
 
-Where `name` is the class property that it should encode from.
+Where `name` is the class property name that it should encode from.
 
 - `BufferObject.encode(): ArrayBuffer`,
 
@@ -122,7 +122,7 @@ result in a `TypeError`.
 - `BufferObject.decodeBoolean(name)`
 - `BufferObject.decodeBufferObject(name)`
 
-Where `name` is the class property that it should decode into.
+Where `name` is the class property name that it should decode into.
 
 - `BufferObject.decode(buffer: ArrayBuffer)`,
 
@@ -170,7 +170,7 @@ an encoding or a decoding step respectively, which won't be executed until
 
 Creating such object can be done in two ways:
 ```javascript
-DerivedClass.prototype.fromBuffer(buffer);
+let user = DerivedClass.prototype.fromBuffer(buffer);
 ```
 or
 ```javascript
