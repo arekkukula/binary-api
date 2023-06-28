@@ -1,3 +1,6 @@
+/** Author: @arekkukula on GitHub.
+ * See README.md for license contents.
+*/
 import { BufferObject } from "./buffer-object.js";
 
 export class User extends BufferObject {

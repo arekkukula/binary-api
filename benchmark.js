@@ -1,3 +1,6 @@
+/** Author: @arekkukula on GitHub.
+ * See README.md for license contents.
+*/
 import { User } from "./shared/user.js";
 
 const STR_LEN = 10;

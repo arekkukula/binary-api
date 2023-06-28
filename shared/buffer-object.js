@@ -1,14 +1,17 @@
+/** Author: @arekkukula on GitHub.
+ * See README.md for license contents.
+*/
 const _decodeSequence = Symbol("BufferObjectDecodeSequence");
 const _encodeSequence = Symbol("BufferObjectEncodeSequence");
 
 /**
-    * 
+    *
 */
 export class BufferObject {
     [_decodeSequence] = [];
     [_encodeSequence] = [];
-    
-    /** 
+
+    /**
         * To construct BufferObject from ArrayBuffer,
         * use DeviredClass.prototype.from(ArrayBuffer),
     */
@@ -37,7 +40,7 @@ export class BufferObject {
         return obj;
     }
     // eslint-disable-next-line no-unused-vars
-    /** 
+    /**
         * Declare encoding steps in this function.
         * Make sure they follow the order in which
         * the class properties were defined.
@@ -59,7 +62,7 @@ export class BufferObject {
     }
 
     // eslint-disable-next-line no-unused-vars
-    /** 
+    /**
         * Declare decoding steps in this function.
         * Make sure they follow the order in which
         * the class properties were defined.
@@ -90,8 +93,8 @@ export class BufferObject {
 
         for (let i = 0; i < decodeSteps.length; i++) {
             offset = _decode(
-                buffer, 
-                offset, 
+                buffer,
+                offset,
                 decodeSteps[i].type,
                 (val) => propertySetter(val, decodeSteps[i].field)
             );
@@ -127,11 +130,11 @@ export class BufferObject {
     encode() {
         const properties = this[_encodeSequence];
         const encoded = _encode(this, properties);
-        
+
         // cleanup encoding steps, so that toBuffer
         // can be reused multiple times on a single
         // instance without it growing infinitely.
-        this[_encodeSequence].splice(0, this[_encodeSequence].length); 
+        this[_encodeSequence].splice(0, this[_encodeSequence].length);
         return encoded;
     }
 
@@ -149,7 +152,7 @@ export class BufferObject {
         _checkIfFieldExists(name, this);
         this[_encodeSequence].push({ type: "boolean", field: name });
     }
-    
+
     encodeBufferObject(name) {
         _checkIfFieldExists(name, this);
         this[_encodeSequence].push({ type: "BufferObject", field: name });
@@ -157,8 +160,8 @@ export class BufferObject {
 }
 
 
-/** 
-    * For internal use. 
+/**
+    * For internal use.
 */
 function _checkIfFieldExists(name, obj) {
     if (!(name in obj)) {
@@ -284,7 +287,7 @@ function _encodeNumber(num) {
     return buf;
 }
 
-/** 
+/**
     * @param {string} str
     * @returns {ArrayBuffer} ArrayBuffer
 */

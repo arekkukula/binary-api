@@ -1,4 +1,5 @@
 # Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Theory](#theory)
 - [Encoding](#encoding)
@@ -16,6 +17,7 @@
 - [Running node with --trace-opt](#running-node-with---trace-opt)
 - [Future](#future)
 - [External resources](#external-resources)
+- [License](#license)
 
 # Introduction
 
@@ -274,4 +276,13 @@ That should be fun!
 
 # External resources
 **[1]** [Google I/O 2012 - Breaking the JavaScript Speed Limit with V8](https://www.youtube.com/watch?v=UJPdhx5zTaw) - specifically 25:03 - 35:55
+
+# License
+I (@arekkukula) am the sole copyright holder of code under the files named
+"shared/buffer-object.js", "shared/user.js", "benchmark.js", and thereby retain the rights to all of it.
+I forbid using the code in commercial products, selling and/or using it under your own name.
+As it is a Proof of Concept, use of this code in any open source and/or personal and/or non-commercial projects
+must be very limited, as it will receive no support from me. I explicitly forbid shipping any user-facing product
+with this code. Attribution is required in all cases of use and misuse, taking form of a URL to this repository,
+both in a centralized license file and in the source code.
 
