@@ -1,8 +1,4 @@
-# binary-api
-
 # Table of Contents
-- [binary-api](#binary-api)
-- [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Theory](#theory)
 - [Encoding](#encoding)
@@ -18,6 +14,7 @@
   - [Results](#results)
   - [Thoughts](#thoughts)
 - [Running node with --trace-opt](#running-node-with---trace-opt)
+- [Future](#future)
 - [External resources](#external-resources)
 
 # Introduction
@@ -269,6 +266,11 @@ This could mean a few things:
 - I have no idea what I'm reading 🤡
 
 Refer to [trace-opt.txt](./trace-opt.txt) to see the logs of the above.
+
+# Future
+
+If time allows, I'd like to finish encoding/decoding nested BufferObjects, and also implement Array decoding/encoding.
+That should be fun!
 
 # External resources
 **[1]** [Google I/O 2012 - Breaking the JavaScript Speed Limit with V8](https://www.youtube.com/watch?v=UJPdhx5zTaw) - specifically 25:03 - 35:55
