@@ -87,7 +87,7 @@ an encoding or a decoding step respectively, which won't be executed until
 
 Creating such object can be done in two ways:
 ```javascript
-User.prototype.fromBuffer(buffer);
+let user = User.prototype.fromBuffer(buffer);
 ```
 or 
 ```javascript
