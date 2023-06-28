@@ -1,5 +1,5 @@
 /** Author: @arekkukula on GitHub.
- * See README.md for license contents.
+ * See https://github.com/arekkukula/binary-api/LICENSE.md for license contents.
 */
 import { User } from "./shared/user.js";
 
