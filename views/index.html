@@ -8,9 +8,10 @@
             import { User } from "/shared/user.js";
             const user = new User(123456789, "First Name", "Second Name");
 
-            const encodedUser = user.encode();
+            console.log(JSON.stringify(user));
+
+            const encodedUser = user.toBuffer();
             const view = new Uint8Array(encodedUser);
-            console.log("ENCODED", view, "\n\n\n");
 
             let http = new XMLHttpRequest();
             http.open("POST", "/api/buf", true);
