@@ -98,7 +98,10 @@ export class BufferObject {
         }
 
         buffer = null;
-        // delete this[_decodeSequence];
+        // cleanup decoding steps, so that fromBuffer
+        // can be reused multiple times on a single
+        // instance without it growing infinitely.
+        this[_decodeSequence].splice(0, this[_decodeSequence].length);
     }
 
     decodeNumber(name) {
@@ -124,6 +127,11 @@ export class BufferObject {
     encode() {
         const properties = this[_encodeSequence];
         const encoded = _encode(this, properties);
+        
+        // cleanup encoding steps, so that toBuffer
+        // can be reused multiple times on a single
+        // instance without it growing infinitely.
+        this[_encodeSequence].splice(0, this[_encodeSequence].length); 
         return encoded;
     }
 

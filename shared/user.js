@@ -1,6 +1,10 @@
 import { BufferObject } from "./buffer-object.js";
 
 export class User extends BufferObject {
+    static f_id = "id";
+    static f_firstName = "firstName";
+    static f_secondName = "secondName";
+
     /** @type {number} */
     id;
     /** @type {string} */
@@ -10,22 +14,22 @@ export class User extends BufferObject {
 
     constructor(id, firstName, secondName) {
         super();
-        this.id = id;
-        this.firstName = firstName;
-        this.secondName = secondName;
+        this[User.f_id] = id;
+        this[User.f_firstName] = firstName;
+        this[User.f_secondName] = secondName;
     }
 
     toBuffer() {
-        this.encodeNumber("id");
-        this.encodeString("firstName");
-        this.encodeString("secondName");
+        this.encodeNumber(User.f_id);
+        this.encodeString(User.f_firstName);
+        this.encodeString(User.f_secondName);
         return this.encode();
     }
 
     fromBuffer(buffer) {
-        this.decodeNumber("id");
-        this.decodeString("firstName");
-        this.decodeString("secondName");
+        this.decodeNumber(User.f_id);
+        this.decodeString(User.f_firstName);
+        this.decodeString(User.f_secondName);
         this.decode(buffer);
     }
 }
