@@ -99,61 +99,84 @@ describe("ObjectBuffer", () => {
             expect(getDataSlice(buf).byteLength).toBe(8);
             expect(decoded.value).toBe(testObj.value);
 
-            // testObj.value = -10987654321.123456789;
-            // buf = testObj.toBuffer();
-            // console.log("buf", buf);
-            // decoded = TestNumber.prototype.from(buf);
+            testObj.value = -10987654321.123456789;
+            buf = testObj.toBuffer();
+            decoded = TestNumber.prototype.from(buf);
 
-            // expect(getDataSlice(buf).byteLength).toBe(8);
-            // expect(decoded.value).toBe(testObj.value);
+            expect(getDataSlice(buf).byteLength).toBe(8);
+            expect(decoded.value).toBe(testObj.value);
         });
 
         it("encodes -0 as float64", () => {
-            let user = new User(-0, "", "");
-            buf = user.toBuffer();
-            decoded = User.prototype.from(buf);
+            testObj.value = -0;
+            buf = testObj.toBuffer();
+            decoded = TestNumber.prototype.from(buf);
+            
+            expect(getDataSlice(buf).byteLength).toBe(8);
+            expect(decoded.value).toBe(testObj.value);
         });
 
         it("encodes positive infinity", () => {
-            let user = new User(Number.POSITIVE_INFINITY, "", "");
-            buf = user.toBuffer();
-            decoded = User.prototype.from(buf);
+            testObj.value = Number.POSITIVE_INFINITY;
+            buf = testObj.toBuffer();
+            decoded = TestNumber.prototype.from(buf);
+            
+            expect(getDataSlice(buf).byteLength).toBe(8);
+            expect(decoded.value).toBe(testObj.value);
         });
 
         it("encodes and decodes negative infinity", () => {
-            let user = new User(Number.NEGATIVE_INFINITY, "", "");
-            buf = user.toBuffer();
-            decoded = User.prototype.from(buf);
+            testObj.value = Number.NEGATIVE_INFINITY;
+            buf = testObj.toBuffer();
+            decoded = TestNumber.prototype.from(buf);
+            
+            expect(getDataSlice(buf).byteLength).toBe(8);
+            expect(decoded.value).toBe(testObj.value);
         });
 
         it("encodes and decodes Number.MAX_VALUE", () => {
-            let user = new User(Number.MAX_VALUE, "", "");
-            buf = user.toBuffer();
-            decoded = User.prototype.from(buf);
+            testObj.value = Number.MAX_VALUE;
+            buf = testObj.toBuffer();
+            decoded = TestNumber.prototype.from(buf);
+            
+            expect(getDataSlice(buf).byteLength).toBe(8);
+            expect(decoded.value).toBe(testObj.value);
         });
 
         it("encodes and decodes Number.MIN_VALUE", () => {
-            let user = new User(Number.MIN_VALUE, "", "");
-            buf = user.toBuffer();
-            decoded = User.prototype.from(buf);
+            testObj.value = Number.MIN_VALUE;
+            buf = testObj.toBuffer();
+            decoded = TestNumber.prototype.from(buf);
+            
+            expect(getDataSlice(buf).byteLength).toBe(8);
+            expect(decoded.value).toBe(testObj.value);
         });
 
         it("encodes and decodes Number.MAX_SAFE_INTEGER", () => {
-            let user = new User(Number.MAX_SAFE_INTEGER, "", "");
-            buf = user.toBuffer();
-            decoded = User.prototype.from(buf);
+            testObj.value = Number.MAX_SAFE_INTEGER;
+            buf = testObj.toBuffer();
+            decoded = TestNumber.prototype.from(buf);
+            
+            expect(getDataSlice(buf).byteLength).toBe(8);
+            expect(decoded.value).toBe(testObj.value);
         });
 
         it("encodes and decodes Number.MIN_SAFE_INTEGER", () => {
-            let user = new User(Number.MIN_SAFE_INTEGER, "", "");
-            buf = user.toBuffer();
-            decoded = User.prototype.from(buf);
+            testObj.value = Number.MIN_SAFE_INTEGER;
+            buf = testObj.toBuffer();
+            decoded = TestNumber.prototype.from(buf);
+            
+            expect(getDataSlice(buf).byteLength).toBe(8);
+            expect(decoded.value).toBe(testObj.value);
         });
 
         it("encodes and decodes NaN", () => {
-            let user = new User(NaN, "", "");
-            buf = user.toBuffer();
-            decoded = User.prototype.from(buf);
+            testObj.value = NaN;
+            buf = testObj.toBuffer();
+            decoded = TestNumber.prototype.from(buf);
+            
+            expect(getDataSlice(buf).byteLength).toBe(8);
+            expect(decoded.value).toBe(testObj.value);
         });
 
     });
