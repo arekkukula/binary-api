@@ -253,6 +253,13 @@ function _getBytes(value) {
         // bytes += value._getBytes
         // TODO:
     } else if (typeof value === "number") {
+        // Special case: -0 should be float64,
+        // but -0 === 0, therefore it encodes
+        // as int32 by default
+        if (value === -0) {
+            return 8;
+        }
+
         bytes = value >> 0 === value ? 4 : 8;
     } else if (typeof value === "string") {
         bytes = value.length * 2;
@@ -267,7 +274,11 @@ function _getBytes(value) {
     * @returns {ArrayBuffer}
 */
 function _encodeNumber(num) {
-    const bytes = num >> 0 === num ? 4 : 8;
+    let bytes = num >> 0 === num ? 4 : 8;
+    if (num === -0) {
+        bytes = 8;
+    }
+
     const buf = new ArrayBuffer(bytes + 4);
 
     const length = new Uint32Array(buf.slice(0, 4));
