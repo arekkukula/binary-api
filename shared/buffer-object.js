@@ -72,7 +72,7 @@ export class BufferObject {
         *     this.decodeNumber("id");
         *     this.decodeString("name");
         *     this.decodeBoolean("available");
-        *     this.decode();
+        *     this.decode(buffer);
         *   }
     */
     fromBuffer(buffer) {
